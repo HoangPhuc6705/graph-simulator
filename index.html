@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Graph Generator</title>
+  </head>
+  <body>
+    <div class="card editor">
+      <div class="editor-header"></div>
+      <div class="editor-content">
+        <div id="node-property">
+          <span>Vertex</span>
+          <div id="detail">
+            <div class="property-row">
+              <span>Value</span>
+              <input id="prop-value" type="text" class="input-attribute" placeholder="Enter value">
+            </div>
+            <div class="property-row">
+              <span>Degree</span>
+              <span id="prop-degree">0</span>
+            </div>
+            <div class="property-row loop-row">
+              <span>Loop</span>
+              <div class="loop-controls">
+                <input id="prop-loop-count" type="number" class="input-attribute loop-count" min="0" value="0">
+              </div>
+            </div>
+            <div class="property-row angle-row">
+              <span>Loop Angle</span>
+              <div class="angle-controls">
+                <input id="prop-loop-angle" type="range" min="0" max="360" value="0" class="loop-angle">
+                <span id="prop-loop-angle-value">0deg</span>
+              </div>
+            </div>
+            <div class="property-row">
+              <span>Adjacents</span>
+              <span id="prop-adjacents">Null</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="editor-footer">
+        <button id="generate-code-btn" class="btn">Generate Code</button>
+      </div>
+    </div>
+    <div class="card canvas">
+      <div class="canvas-header top-header">
+        <span class="title">Canvas</span>
+        <div class="toolbar">
+          <button class="toolbar-button" id="view">
+            <i data-lucide="mouse-pointer-2"></i>
+          </button>
+          <button class="toolbar-button" id="handing">
+            <i data-lucide="hand"></i>
+          </button>
+          <button class="toolbar-button" id="adding">
+            <i data-lucide="diamond-plus"></i>
+          </button>
+          <button class="toolbar-button" id="connecting">
+            <i data-lucide="cable"></i>
+          </button>
+        </div>
+      </div>
+      <div class="canvas-content" id="canvas"></div>
+      <div class="canvas-header bottom-header">
+        <div id="pointer-position">Position: (NaN, NaN)</div>
+      </div>
+    </div>
+
+    <div id="code-popup" class="code-popup code-popup-hidden" aria-hidden="true">
+      <div class="code-popup-overlay" id="code-popup-overlay"></div>
+      <div class="code-popup-card">
+        <div class="code-popup-header">
+          <span>Generated Source</span>
+          <button id="close-code-popup" class="code-popup-close" type="button">Close</button>
+        </div>
+        <div class="code-mode-switch">
+          <button id="mode-adj-list" class="code-mode-btn code-mode-btn-active" type="button">Adjacency List</button>
+          <button id="mode-matrix" class="code-mode-btn" type="button">Matrix</button>
+        </div>
+        <textarea id="generated-code-output" class="generated-code-output" readonly></textarea>
+        <button id="copy-generated-code" class="btn copy-btn" type="button">Copy</button>
+      </div>
+    </div>
+
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>
